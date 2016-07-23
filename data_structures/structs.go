@@ -1,13 +1,44 @@
 package data_structures
-
+import "fmt"
 // Linked List Implementation
+type LinkedList struct{
+	first *Node
+	last *Node
+	length int
+}
+type Node struct{
+	elem int
+	next *Node
+}
 
-type Node struct{}
+func (list *LinkedList) Add(elem int) {
+	node := Node{elem,nil}
+	if(list.length == 0){
+		list.first = &node
+		list.last = &node
+		list.length ++
+	}else{
+		lastNode := list.first
+		// for(lastNode != nil){
+		// 	if(lastNode.next == nil){
+		// 		lastNode.next = &node
+		// 		list.last = &node
+		// 		list.length ++
+		// 	}
+		// 	lastNode = lastNode.next
+		// }
+	}
 
-func Add(elem int) {
 	return
 }
 
-func Search(elem int) *Node {
+func (list *LinkedList) Search(elem int) *Node {
+	node := list.first
+	for (node != nil) {
+		if(node.elem == elem){
+			return node
+		}
+		node = node.next
+	}
 	return nil
 }

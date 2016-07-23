@@ -14,11 +14,9 @@ func mapInts(op mapOperation, vals []int32) []int32 {
 
 func filterInts(op filterOperation, vals []int32) []int32 {
 	filterVals := make([]int32,1,1)
-	filterSliceIndex := 0
 	for _, value := range vals {
 		if(op(value)){
-			filterVals[filterSliceIndex] = value
-			filterSliceIndex ++
+			filterVals = append(filterVals, value) 
 		}
 	}
 	return filterVals
@@ -33,9 +31,18 @@ fmt.Println("%+v",newSlice)
 }
 
 func equals(list1 []string, list2 []string) bool {
-	return false
+	for index,value := range list1{
+		if(value != list2[index]){
+			return false
+		}
+	}
+	return true
 }
 
 func partialReverse(src []int, from, to int) []int {
-	return nil
+	newSlice := make([]int,0,0)
+	for i:=to; i>=from; i-- {
+		newSlice = append(newSlice, src[i])
+	}
+	return newSlice
 }
