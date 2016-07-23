@@ -1,5 +1,5 @@
 package data_structures
-import "fmt"
+
 // Linked List Implementation
 type LinkedList struct{
 	first *Node
@@ -19,14 +19,15 @@ func (list *LinkedList) Add(elem int) {
 		list.length ++
 	}else{
 		lastNode := list.first
-		// for(lastNode != nil){
-		// 	if(lastNode.next == nil){
-		// 		lastNode.next = &node
-		// 		list.last = &node
-		// 		list.length ++
-		// 	}
-		// 	lastNode = lastNode.next
-		// }
+		for(lastNode != nil){
+			if(lastNode.next == nil){
+				lastNode.next = &node
+				list.last = &node
+				list.length ++
+				lastNode = &node
+			}
+			lastNode = lastNode.next
+		}
 	}
 
 	return
